@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MetaCoin - Truffle Webpack Demo w/ Frontend</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="./app.js"></script>
+<body>
+  <h1>TimberTrack</h1>
+  <h2>Forest manager</h2>
+  <h3>You have <span class="black"><span id="balance"></span> META</span>, and <span class="black"><span id="balance_2"></span> BETA</span></h3>
+  <div id="piechart" style="width: 900px; height: 500px;"></div>
+
+  <br>
+  <h1>Send Resources</h1>
+  <br><label for="amount">Token Type:</label><input type="text" id="type" placeholder="e.g., 0"></input>
+  <br><label for="amount">Amount:</label><input type="text" id="amount" placeholder="e.g., 95"></input>
+  <br><label for="receiver">To Address:</label><input type="text" id="receiver" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+  <br><br><button id="send" onclick="App.sendCoin(0)">Send resources</button>
+  <br><br>
+  <span id="status"></span>
+  <br>
+
+  <br>
+  <h1>Create Tokens</h1>
+  <br><label for="amount">Token Type:</label><input type="text" id="type2" placeholder="e.g., 0"></input>
+  <br><label for="amount">Amount:</label><input type="text" id="amount2" placeholder="e.g., 95"></input>
+  <input type="hidden" id="receiver" value="fake"></input>
+  <br><br><button id="create" onclick="App.createCoin()">Send resources</button>
+  <br><br>
+  <span id="statusc"></span>
+  <br>
+
+  <br>
+  <h1>Transform Tokens</h1>
+  <br><label for="amount">Token Type:</label><input type="text" id="fromType" placeholder="e.g., 0"></input>
+  <br><label for="amount">Amount:</label><input type="text" id="amountToTransform" placeholder="e.g., 95"></input>
+  <br><label for="amount">New Type:</label><input type="text" id="toType" placeholder="e.g., 1"></input>
+  <br><br><button id="transform" onclick="App.transformCoin()">Transform resources</button>
+  <br><br>
+  <span id="statust"></span>
+  <br>
+
+  <span class="hint"><strong>Hint:</strong> open the browser developer console to view any errors and warnings.</span>
+</body>
+</html>
+
