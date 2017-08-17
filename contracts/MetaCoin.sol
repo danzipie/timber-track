@@ -9,11 +9,12 @@ import "./ConvertLib.sol";
 
 contract MetaCoin {
 	mapping (address => uint) balances;
+    mapping (address => bool) allowedIssuers;
 
 	event Transfer(address indexed _from, address indexed _to, uint256 _value);
 
 	function MetaCoin() {
-		balances[tx.origin] = 10000;
+		balances[tx.origin] = 0;
 	}
 
 	function sendCoin(address receiver, uint amount) returns(bool sufficient) {
@@ -40,5 +41,15 @@ contract MetaCoin {
             //}
             //else { return false; }
 	}
+
+    function setIssuer(address newIssuer) returns(bool){
+
+        //if(msg.sender == owner)
+        //{
+            allowedIssuers[newIssuer] = true;
+            return true;
+        //} else { return false; }
+
+    }
 
 }

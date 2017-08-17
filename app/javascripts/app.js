@@ -39,7 +39,8 @@ var MetaCoin = contract(metacoin_artifacts);
 // For application bootstrapping, check out window.addEventListener below.
 var accounts;
 var account;
-var coins = [];
+var coins = []; // there are 9 coins
+var coinNames = ['Pine', 'Spruce', 'Birch', 'Oak', 'Sawn timber', 'Chips', 'Sawdust', 'Furniture', 'Wood pellets'];
 var fake_address = 0x0;
 
 window.App = {
@@ -64,6 +65,14 @@ window.App = {
       accounts = accs;
       account = accounts[0];
 
+      var alreadyThere = MetaCoin.at('0x966c342a8a70fd2e3a20fa2039f75af5e44fb7b0');
+      console.log('already there')
+      console.log(alreadyThere)
+
+      coins[0] = alreadyThere;
+      coins[1] = alreadyThere;
+        self.refreshBalance();
+      /* Create instances of all the objects
       MetaCoin.new({from: account, gas: 4712388, gasPrice: 100000000000}).then(function(instance){
           coins[0] = instance;
 
@@ -73,6 +82,7 @@ window.App = {
               self.refreshBalance();
           });
       });
+      */
 
     });
   },
