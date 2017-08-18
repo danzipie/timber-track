@@ -22,7 +22,6 @@ Token.setProvider(provider);
 
 // Interact with the contract
 var accounts = web3.eth.accounts;   // the list of accounts
-var coinNames = ['Pine', 'Spruce', 'Birch', 'Oak', 'Sawn timber', 'Chips', 'Sawdust', 'Furniture', 'Wood pellets'];
 
 CentralAuthority.deployed().then(function (authorityContract) {
 
@@ -32,15 +31,17 @@ CentralAuthority.deployed().then(function (authorityContract) {
     console.log("Central Authority deployed at address " + contract_address);
     console.log("Authority account " + accounts[0])
     var fake_address = accounts[0];
+    var coinNames = ['Pine', 'Spruce', 'Birch', 'Oak', 'Sawn timber', 'Chips', 'Sawdust', 'Furniture', 'Wood pellets'];
 
     // now we have to create 9 tokens
+    console.log("Tokens are deployed at addresses:");
     for (var c=0; c<9; c++) {
-        Token.new(coinNames[c],
+        Token.new("name",
             {from: controller_address,
                 gas: 4712388,
                 gasPrice: 100000000000}).then(function(instance){
-                console.log(instance.contract)
-                console.log('Address of token ' + coinNames[c] + ': ' + instance)
+                console.log(instance.address)
+                //console.log('Address of token ' + coinNames[c] + ': ' + instance)
         })
 
     }

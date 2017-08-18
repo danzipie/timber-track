@@ -1,29 +1,6 @@
 // Import the page's CSS. Webpack will know what to do with it.
 import "../stylesheets/app.css";
 
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
-
-    var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Work',     11],
-        ['Eat',      2],
-        ['Commute',  2],
-        ['Watch TV', 2],
-        ['Sleep',    7]
-    ]);
-
-    var options = {
-        title: 'My Daily Activities'
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-    chart.draw(data, options);
-}
-
 // Import libraries we need.
 import { default as Web3} from 'web3';
 import { default as contract } from 'truffle-contract'
@@ -65,24 +42,22 @@ window.App = {
       accounts = accs;
       account = accounts[0];
 
-      var alreadyThere = MetaCoin.at('0x966c342a8a70fd2e3a20fa2039f75af5e44fb7b0');
-      console.log('already there')
-      console.log(alreadyThere)
+      // hard coded addresses of the Tokens
+      var hc = ['0x4ee8f1b11ea5edd3f4e811a7dcdda17ea79e37d1',
+        '0x0f53860fbe672a32ec9dedb71fadbecdc292c800',
+        '0xa60b9b7094f5db00db176444dc66780dfe0a8b0f',
+        '0x36432da32206802389762b86d697de97d8c0325b',
+        '0x7fa17de60c764d62afdf4ccec13ca3f711858628',
+        '0xaccfc807270ff870ca34e9d2acd08f77b0ed8aaf',
+        '0x310d09273a81985c13e7ec7d1d794367d6c8b655',
+        '0xe6e8dd725cd351eb3b2733d6d55d2fc04b2882da',
+        '0xf4cc9a9c8a02560fc68fe2de82f444da966434ce'];
 
-      coins[0] = alreadyThere;
-      coins[1] = alreadyThere;
-        self.refreshBalance();
-      /* Create instances of all the objects
-      MetaCoin.new({from: account, gas: 4712388, gasPrice: 100000000000}).then(function(instance){
-          coins[0] = instance;
+      for (var u=0; u<9; u++) {
+          coins[u] = MetaCoin.at(hc[u]);
+      }
 
-          MetaCoin.new({from: account, gas: 4712388, gasPrice: 100000000000}).then(function(instance){
-              coins[1] = instance;
-
-              self.refreshBalance();
-          });
-      });
-      */
+      self.refreshBalance();
 
     });
   },
@@ -94,25 +69,14 @@ window.App = {
 
   refreshBalance: function() {
     var self = this;
-    //var table = new google.visualization.DataTable();
-    //  var table;
-    //data.addRow(['Material', 'Amount']);
-    //table.push(['string', 'Name']);
-    //table.push(['number', 'Occupation']);
+
     coins[0].getBalance.call(account, {from: account}).then(function(value) {
-      var balance_element = document.getElementById("balance");
+      var balance_element = document.getElementById("balance0");
       balance_element.innerHTML = value.valueOf();
-      console.log(value.valueOf())
-      //table.addRow(['Tree', value.valueOf()]);
 
         coins[1].getBalance.call(account, {from: account}).then(function(value) {
-            var balance_element_2 = document.getElementById("balance_2");
+            var balance_element_2 = document.getElementById("balance1");
             balance_element_2.innerHTML = value.valueOf();
-            //table.addRow(['Coal', value.valueOf()]);
-            //console.log(table)
-            //var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-            //var data = google.visualization.arrayToDataTable(table);
-            //chart.draw(data);
 
         }).catch(function(e) {
             console.log(e);
