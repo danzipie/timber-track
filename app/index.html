@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TimberTrack</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="./app.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="column">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-3">TimberTrack</h1>
+            <p class="lead">A demo for certified timber tracking.</p>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <img src="images/logo.png" class="img-responsive">
+      </div>
+
+    </div>
+
+    <div class="row">
+      <h2>Forest manager</h2>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <ul class="list-group">
+          <li class="list-group-item"><span id="balance0"></span> Pine</span></li>
+          <li class="list-group-item"><span id="balance1"></span> Spruce</span></li>
+          <li class="list-group-item"><span id="balance2"></span> Birch</span></li>
+          <li class="list-group-item"><span id="balance3"></span> Oak</span></li>
+          <li class="list-group-item"><span id="balance4"></span> Sawn timber</span></li>
+          <li class="list-group-item"><span id="balance5"></span> Chips</span></li>
+          <li class="list-group-item"><span id="balance6"></span> Sawn timber</span></li>
+          <li class="list-group-item"><span id="balance7"></span> Sawdust</span></li>
+          <li class="list-group-item"><span id="balance8"></span> Furniture</span></li>
+        </ul>
+      </div>
+      <div class="col">
+
+        <div id="accordion" role="tablist">
+          <div class="card">
+            <div class="card-header" role="tab" id="headingOne">
+              <h5 class="mb-0">
+                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Send Tokens
+                </a>
+              </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+                <div class="form-group row">
+                  <label for="amount">Token Type:</label>
+                  <div class="col-sm-10">
+                    <input type="text" id="type" placeholder="e.g., 0"></input>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="amount">Amount:</label>
+                  <div class="col-sm-10">
+                    <input type="text" id="amount" placeholder="e.g., 95"></input>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="receiver">To Address:</label>
+                  <div class="col-sm-10">
+                    <input type="text" id="receiver" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
+                  </div>
+                </div>
+                <button id="send" onclick="App.sendCoin(0)">Send Tokens</button>
+                <span id="status"></span>
+              </div>
+
+            </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" role="tab" id="headingTwo">
+              <h5 class="mb-0">
+                <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Create Tokens
+                </a>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <br><label for="amount">Token Type:</label><input type="text" id="token_type" placeholder="e.g., 0"></input>
+                <br><label for="amount">Amount:</label><input type="text" id="amount_to_create" placeholder="e.g., 95"></input>
+                <br><br><button id="create" onclick="App.createCoin()">Create Tokens</button>
+                <br><br>
+                <span id="statusc"></span>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" role="tab" id="headingThree">
+              <h5 class="mb-0">
+                <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Transform Tokens
+                </a>
+              </h5>
+            </div>
+            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+              <div class="card-body">
+                <br><label for="amount">Token Type:</label><input type="text" id="fromType" placeholder="e.g., 0"></input>
+                <br><label for="amount">Amount:</label><input type="text" id="amountToTransform" placeholder="e.g., 95"></input>
+                <br><label for="amount">New Type:</label><input type="text" id="toType" placeholder="e.g., 1"></input>
+                <br><br><button id="transform" onclick="App.transformCoin()">Transform resources</button>
+                <br><br>
+                <span id="statust"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
+
