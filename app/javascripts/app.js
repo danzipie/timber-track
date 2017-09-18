@@ -1,12 +1,6 @@
 
 // Import libraries.
 import { default as Web3} from 'web3'
-// Import the page's CSS. Webpack will know what to do with it.
-import "../stylesheets/app.css";
-
-// Import libraries we need.
-import { default as Web3} from 'web3';
->>>>>>> 8f7e9346c62427da05415bebacfee32e92d89e83
 import { default as contract } from 'truffle-contract'
 
 // Import our contract artifacts and turn them into usable abstractions.
@@ -75,7 +69,6 @@ window.App = {
     var self = this;
 
     coins[0].getBalance.call(account, {from: account}).then(function(value) {
-
         var balance_element = document.getElementById("balance0");
         balance_element.innerHTML = value.valueOf();
 
@@ -177,13 +170,10 @@ window.App = {
   createCoin: function() {
       var self = this;
 
-      var amount = parseInt(document.getElementById("amount2").value);
-      var receiver = document.getElementById("receiver").value;
-      var type = document.getElementById("type2").value;
+      var amount = parseInt(document.getElementById("amount_to_create").value);
+      var type = document.getElementById("token_type").value;
 
-      var meta;
       MetaCoin.deployed().then(function(instance) {
-          meta = instance;
           return coins[type].modifyToken(amount, {from: account});
       }).then(function() {
           self.setStatus("Transaction complete!");

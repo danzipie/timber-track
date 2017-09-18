@@ -36,10 +36,10 @@ contract MetaCoin {
     function modifyToken(uint amount) returns(bool){
         //if(isValidIssuer(msg.sender))
         //{
-            balances[msg.sender] = balances[msg.sender] + amount;
-            return true;
-            //}
-            //else { return false; }
+			balances[msg.sender] = balances[msg.sender] + amount;
+			return true;
+		//}
+		//else { return false; }
 	}
 
     function setIssuer(address newIssuer) returns(bool){

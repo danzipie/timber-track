@@ -30,8 +30,6 @@ CentralAuthority.deployed().then(function (authorityContract) {
     var forest_manager = accounts[1];
     console.log("Central Authority deployed at address " + contract_address);
     console.log("Authority account " + accounts[0])
-    var fake_address = accounts[0];
-    var coinNames = ['Pine', 'Spruce', 'Birch', 'Oak', 'Sawn timber', 'Chips', 'Sawdust', 'Furniture', 'Wood pellets'];
 
     // now we have to create 9 tokens
     console.log("Tokens are deployed at addresses:");
