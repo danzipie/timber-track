@@ -41,18 +41,18 @@ window.App = {
       account = accounts[0];
 
       // hard coded addresses of the Tokens
-      var hc = ['0x4ee8f1b11ea5edd3f4e811a7dcdda17ea79e37d1',
-        '0x0f53860fbe672a32ec9dedb71fadbecdc292c800',
-        '0xa60b9b7094f5db00db176444dc66780dfe0a8b0f',
-        '0x36432da32206802389762b86d697de97d8c0325b',
-        '0x7fa17de60c764d62afdf4ccec13ca3f711858628',
-        '0xaccfc807270ff870ca34e9d2acd08f77b0ed8aaf',
-        '0x310d09273a81985c13e7ec7d1d794367d6c8b655',
-        '0xe6e8dd725cd351eb3b2733d6d55d2fc04b2882da',
-        '0xf4cc9a9c8a02560fc68fe2de82f444da966434ce'];
+      var hc = ["0x94591da02f4811dc5172d3167b403bf457ceae39",
+        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",
+        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",
+        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",
+        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",
+        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",
+        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",
+        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",
+        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",]
 
       for (var u=0; u<9; u++) {
-          coins[u] = MetaCoin.at(hc[u]);
+        coins[u] = MetaCoin.at(hc[u]);
       }
 
       self.refreshBalance();
@@ -67,82 +67,25 @@ window.App = {
 
   refreshBalance: function() {
     var self = this;
+    var eBs = ["balance0", "balance1", "balance2","balance3","balance4","balance5","balance6","balance7","balance8"];
 
-    coins[0].getBalance.call(account, {from: account}).then(function(value) {
-        var balance_element = document.getElementById("balance0");
-        balance_element.innerHTML = value.valueOf();
+    for (var u=0; u<9; u++) {
 
-    }).catch(function(e) {
-        console.log(e);
-        self.setStatus("Error getting balance; see log.");
-    });
+      var eBalance = eBs[u];
 
-      coins[1].getBalance.call(account, {from: account}).then(function(value) {
-          var balance_element = document.getElementById("balance1");
+      (function(wp) { // wrapper
+        coins[u].getBalance.call(account, {from: account}).then(function (value) {
+
+          var balance_element = document.getElementById(wp);
           balance_element.innerHTML = value.valueOf();
 
-      }).catch(function(e) {
+        }).catch(function (e) {
           console.log(e);
           self.setStatus("Error getting balance; see log.");
-      });
+        });
+      })(eBalance);
 
-      coins[2].getBalance.call(account, {from: account}).then(function(value) {
-          var balance_element = document.getElementById("balance2");
-          balance_element.innerHTML = value.valueOf();
-
-      }).catch(function(e) {
-          console.log(e);
-          self.setStatus("Error getting balance; see log.");
-      });
-
-      coins[3].getBalance.call(account, {from: account}).then(function(value) {
-          var balance_element = document.getElementById("balance3");
-          balance_element.innerHTML = value.valueOf();
-
-      }).catch(function(e) {
-          console.log(e);
-          self.setStatus("Error getting balance; see log.");
-      });
-      coins[4].getBalance.call(account, {from: account}).then(function(value) {
-          var balance_element = document.getElementById("balance4");
-          balance_element.innerHTML = value.valueOf();
-
-      }).catch(function(e) {
-          console.log(e);
-          self.setStatus("Error getting balance; see log.");
-      });
-      coins[5].getBalance.call(account, {from: account}).then(function(value) {
-          var balance_element = document.getElementById("balance5");
-          balance_element.innerHTML = value.valueOf();
-
-      }).catch(function(e) {
-          console.log(e);
-          self.setStatus("Error getting balance; see log.");
-      });
-      coins[6].getBalance.call(account, {from: account}).then(function(value) {
-          var balance_element = document.getElementById("balance6");
-          balance_element.innerHTML = value.valueOf();
-
-      }).catch(function(e) {
-          console.log(e);
-          self.setStatus("Error getting balance; see log.");
-      });
-      coins[7].getBalance.call(account, {from: account}).then(function(value) {
-          var balance_element = document.getElementById("balance7");
-          balance_element.innerHTML = value.valueOf();
-
-      }).catch(function(e) {
-          console.log(e);
-          self.setStatus("Error getting balance; see log.");
-      });
-      coins[8].getBalance.call(account, {from: account}).then(function(value) {
-          var balance_element = document.getElementById("balance8");
-          balance_element.innerHTML = value.valueOf();
-
-      }).catch(function(e) {
-          console.log(e);
-          self.setStatus("Error getting balance; see log.");
-      });
+    }
 
   },
 
@@ -172,11 +115,12 @@ window.App = {
 
       var amount = parseInt(document.getElementById("amount_to_create").value);
       var type = document.getElementById("token_type").value;
-
+      console.log(account + " is creating "+ amount +" coins of type " + type)
       MetaCoin.deployed().then(function(instance) {
           return coins[type].modifyToken(amount, {from: account});
       }).then(function() {
           self.setStatus("Transaction complete!");
+
           self.refreshBalance();
       }).catch(function(e) {
           console.log(e);

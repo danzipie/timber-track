@@ -1,6 +1,6 @@
 # timber-track
 
-Project developed during the hackathlon organized at the Copenhagen Summer School 2017.
+Project developed during the hackathlon organized at the Copenhagen Blockchain Summer School 2017.
 The project extends the Truffle Metachain project to support multiple tokens that can be transformed into others.
 Tokens represent physical goods that are traded in the timber supply chain.
 The transformation rate depends on the actual processing that happens in the supply chain.
@@ -26,8 +26,5 @@ nodejs app/javascript/central_authority_controller.js
 ```
 
 The addresses of the deployed contract should be hard coded in the web interface of the traders.
-The web interface is hosted locally, e.g.,
+The web interface is hosted by localhost, is build by webpack and uses Bootstrap.
 
-```
-http://localhost:8080
-```
