@@ -27,102 +27,190 @@
 
     </div>
 
+
     <div class="row">
-      <h2>Forest manager</h2>
+      <h2>Who are you?</h2>
+    </div>
+    <div class="row">
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#fm">Forest manager</button>
     </div>
 
-    <div class="row">
-      <div class="col">
-        <ul class="list-group">
-          <li class="list-group-item"><span id="balance0"></span> Pine</span></li>
-          <li class="list-group-item"><span id="balance1"></span> Spruce</span></li>
-          <li class="list-group-item"><span id="balance2"></span> Birch</span></li>
-          <li class="list-group-item"><span id="balance3"></span> Oak</span></li>
-          <li class="list-group-item"><span id="balance4"></span> Sawn timber</span></li>
-          <li class="list-group-item"><span id="balance5"></span> Chips</span></li>
-          <li class="list-group-item"><span id="balance6"></span> Sawn timber</span></li>
-          <li class="list-group-item"><span id="balance7"></span> Sawdust</span></li>
-          <li class="list-group-item"><span id="balance8"></span> Furniture</span></li>
-        </ul>
-      </div>
-      <div class="col">
-
-        <div id="accordion" role="tablist">
-          <div class="card">
-            <div class="card-header" role="tab" id="headingOne">
-              <h5 class="mb-0">
-                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Send Tokens
-                </a>
-              </h5>
-            </div>
-
-            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="card-body">
-                <div class="form-group row">
-                  <label for="amount">Token Type:</label>
-                  <div class="col-sm-10">
-                    <input type="text" id="type" placeholder="e.g., 0"></input>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="amount">Amount:</label>
-                  <div class="col-sm-10">
-                    <input type="text" id="amount" placeholder="e.g., 95"></input>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="receiver">To Address:</label>
-                  <div class="col-sm-10">
-                    <input type="text" id="receiver" placeholder="e.g., 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"></input>
-                  </div>
-                </div>
-                <button id="send" onclick="App.sendCoin(0)">Send Tokens</button>
-                <span id="status"></span>
-              </div>
-
-            </div>
-            </div>
+    <div id="fm" class="collapse">
+        <div class="row">
+          <div class="col">
+            <ul class="list-group">
+              <li class="list-group-item"><span id="balance0"></span> Pine</span></li>
+              <li class="list-group-item"><span id="balance1"></span> Spruce</span></li>
+              <li class="list-group-item"><span id="balance2"></span> Birch</span></li>
+              <li class="list-group-item"><span id="balance3"></span> Oak</span></li>
+              <li class="list-group-item"><span id="balance4"></span> Sawn timber</span></li>
+              <li class="list-group-item"><span id="balance5"></span> Chips</span></li>
+              <li class="list-group-item"><span id="balance6"></span> Sawn timber</span></li>
+              <li class="list-group-item"><span id="balance7"></span> Sawdust</span></li>
+              <li class="list-group-item"><span id="balance8"></span> Furniture</span></li>
+            </ul>
           </div>
-          <div class="card">
-            <div class="card-header" role="tab" id="headingTwo">
-              <h5 class="mb-0">
-                <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Create Tokens
-                </a>
-              </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-              <div class="card-body">
-                <br><label for="amount">Token Type:</label><input type="text" id="token_type" placeholder="e.g., 0"></input>
-                <br><label for="amount">Amount:</label><input type="text" id="amount_to_create" placeholder="e.g., 95"></input>
-                <br><br><button id="create" onclick="App.createCoin()">Create Tokens</button>
-                <br><br>
-                <span id="statusc"></span>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" role="tab" id="headingThree">
-              <h5 class="mb-0">
-                <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Transform Tokens
-                </a>
-              </h5>
-            </div>
-            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-              <div class="card-body">
-                <br><label for="amount">Token Type:</label><input type="text" id="fromType" placeholder="e.g., 0"></input>
-                <br><label for="amount">Amount:</label><input type="text" id="amountToTransform" placeholder="e.g., 95"></input>
-                <br><label for="amount">New Type:</label><input type="text" id="toType" placeholder="e.g., 1"></input>
-                <br><br><button id="transform" onclick="App.transformCoin()">Transform resources</button>
-                <br><br>
-                <span id="statust"></span>
+          <div class="col">
+
+            <div id="accordion" role="tablist">
+              <div class="card">
+                <div class="card-header" role="tab" id="headingOne">
+                  <h5 class="mb-0">
+                    <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Send Tokens
+                    </a>
+                  </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                        <label for="amount">Token Type:</label>
+                      </div>
+                      <div class="col">
+                        <select class="form-control" id="type">
+                          <option value="0">Pine</option>
+                          <option value="1">Spruce</option>
+                          <option value="2">Birch</option>
+                          <option value="3">Oak</option>
+                          <option value="4">Sawn timber</option>
+                          <option value="5">Chips</option>
+                          <option value="6">Sawdust</option>
+                          <option value="7">Furniture</option>
+                          <option value="8">Wood pellets</option>
+                        </select>
+                      </div>
+                      <div class="w-100"></div>
+                      <div class="col">
+                        <label for="amount">Amount:</label>
+                      </div>
+                      <div class="col">
+                        <input type="number" id="amount" placeholder="e.g., 95"></input>
+                      </div>
+                      <div class="w-100"></div>
+                      <div class="col">
+                        <label for="receiver">To Address:</label>
+                      </div>
+                      <div class="col">
+                        <select class="form-control" id="receiver">
+                          <option value="acc0" id="acc0"><span id="acc0"></span></option>
+                          <option value="acc1" id="acc1"><span id="acc1"></span></option>
+                          <option value="acc2" id="acc2"><span id="acc2"></span></option>
+                          <option value="acc3" id="acc3"><span id="acc3"></span></option>
+                        </select>
+                      </div>
+                    </div>
+                    <button id="send" onclick="App.sendCoin(0)" class="btn btn-warning">Send Tokens</button>
+                    <span id="status"></span>
+                  </div>
+
+                </div>
               </div>
             </div>
+
+            <div class="card">
+              <div class="card-header" role="tab" id="headingTwo">
+                <h5 class="mb-0">
+                  <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Create Tokens
+                  </a>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <label for="amount">Token Type:</label>
+                    </div>
+                    <div class="col">
+                      <select class="form-control" id="token_type">
+                        <option value="0">Pine</option>
+                        <option value="1">Spruce</option>
+                        <option value="2">Birch</option>
+                        <option value="3">Oak</option>
+                        <option value="4">Sawn timber</option>
+                        <option value="5">Chips</option>
+                        <option value="6">Sawdust</option>
+                        <option value="7">Furniture</option>
+                        <option value="8">Wood pellets</option>
+                      </select>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col">
+                      <label for="amount">Amount:</label>
+                    </div>
+                    <div class="col">
+                      <input type="number" id="amount_to_create" placeholder="e.g., 95"></input>
+                    </div>
+                  </div>
+                  <button id="create" onclick="App.createCoin()" class="btn btn-success">Create Tokens</button>
+                  <span id="statusc"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header" role="tab" id="headingThree">
+                <h5 class="mb-0">
+                  <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Transform Tokens
+                  </a>
+                </h5>
+              </div>
+              <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+
+                  <div class="row">
+                    <div class="col">
+                      <label for="amount">Token Type:</label>
+                    </div>
+                    <div class="col">
+                      <select class="form-control" id="fromType">
+                        <option value="0">Pine</option>
+                        <option value="1">Spruce</option>
+                        <option value="2">Birch</option>
+                        <option value="3">Oak</option>
+                        <option value="4">Sawn timber</option>
+                        <option value="5">Chips</option>
+                        <option value="6">Sawdust</option>
+                        <option value="7">Furniture</option>
+                        <option value="8">Wood pellets</option>
+                      </select>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col">
+                      <label for="amount">Amount:</label>
+                    </div>
+                    <div class="col">
+                      <input type="number" id="amountToTransform" placeholder="e.g., 95"></input>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col">
+                      <label for="amount">New type:</label>
+                    </div>
+                    <div class="col">
+                      <select class="form-control" id="toType">
+                        <option value="0">Pine</option>
+                        <option value="1">Spruce</option>
+                        <option value="2">Birch</option>
+                        <option value="3">Oak</option>
+                        <option value="4">Sawn timber</option>
+                        <option value="5">Chips</option>
+                        <option value="6">Sawdust</option>
+                        <option value="7">Furniture</option>
+                        <option value="8">Wood pellets</option>
+                      </select>
+                    </div>
+                  </div>
+                  <button id="transform" onclick="App.transformCoin()" class="btn btn-warning">Transform resources</button>
+                  <span id="statust"></span>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
-
       </div>
     </div>
 

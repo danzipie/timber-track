@@ -12,7 +12,7 @@ var MetaCoin = contract(metacoin_artifacts);
 // The following code is simple to show off interacting with your contracts.
 // As your needs grow you will likely need to change its form and structure.
 // For application bootstrapping, check out window.addEventListener below.
-var accounts;
+var accounts = [];
 var account;
 var coins = []; // there are 9 coins
 var coinNames = ['Pine', 'Spruce', 'Birch', 'Oak', 'Sawn timber', 'Chips', 'Sawdust', 'Furniture', 'Wood pellets'];
@@ -41,21 +41,22 @@ window.App = {
       account = accounts[0];
 
       // hard coded addresses of the Tokens
-      var hc = ["0x94591da02f4811dc5172d3167b403bf457ceae39",
-        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",
-        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",
-        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",
-        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",
-        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",
-        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",
-        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",
-        "0x55cca67321b9bf9d47973b714e0b3c94940fbf2b",]
+      var hc = ['0xd75b1934837d1c3161090a5906d40dc15cfe1b75',
+        '0x30d7925b042eb25710e6754b216370ea3248a9be',
+        '0xa03cd815092d80edaf396e8637205ad8f42045b5',
+        '0x0db5becc223670837478431c23cebf58c37be298',
+        '0x03de66d442e719cafea7841292e0c8bd6d691f0a',
+        '0x51c14121d836208ccdbc04ca9ca6081440ff1377',
+        '0xa5e59f8de25141b9e2c25514090b49d2b354d478',
+        '0xd994be51593b20efb1129cee4ed6306ae149eb8f',
+        '0xd1d4eda0ea77db729f7d970046cee0a3f76b2480']
 
       for (var u=0; u<9; u++) {
         coins[u] = MetaCoin.at(hc[u]);
       }
 
       self.refreshBalance();
+      self.listAccounts();
 
     });
   },
@@ -84,6 +85,31 @@ window.App = {
           self.setStatus("Error getting balance; see log.");
         });
       })(eBalance);
+
+    }
+
+  },
+
+  listAccounts: function() {
+    var self = this;
+    // ten accounts?
+    var accNames = ['acc0','acc1','acc2','acc3'];
+
+    for (var u=0; u<4; u++) {
+
+      var accName = accNames[u];
+
+      (function(wp) { // wrapper
+        //coins[u].getBalance.call(account, {from: account}).then(function (value) {
+console.log(wp)
+          var acc_element = document.getElementById(wp);
+          acc_element.innerHTML = accName;
+
+        //}).catch(function (e) {
+        //  console.log(e);
+        //  self.setStatus("Error getting balance; see log.");
+        //});
+      })(accName);
 
     }
 
